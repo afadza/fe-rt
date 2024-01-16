@@ -15,22 +15,22 @@ const TableOne = () => {
           <div className="p-2.5 xl:p-5">
             <h5 className="text-sm font-medium uppercase xsm:text-base">No</h5>
           </div>
-          <div className="p-2.5 text-center xl:p-5 md:-ml-29 -ml-26">
+          <div className="p-2.5 xl:p-5 -ml-10">
             <h5 className="text-sm font-medium uppercase xsm:text-base">
               Bulan
             </h5>
           </div>
-          <div className="hidden p-2.5 text-center sm:block xl:p-5 -ml-20">
+          <div className="hidden p-2.5 sm:block xl:p-5 -ml-10">
             <h5 className="text-sm font-medium uppercase xsm:text-base">
               Uang Satpam
             </h5>
           </div>
-          <div className="hidden p-2.5 text-center sm:block xl:p-5">
+          <div className="hidden p-2.5 sm:block xl:p-5 -ml-10">
             <h5 className="text-sm font-medium uppercase xsm:text-base">
               Uang Kebersihan
             </h5>
           </div>
-          <div className="p-2.5 text-center xl:p-5">
+          <div className="p-2.5 xl:p-5">
             <h5 className="text-sm font-medium uppercase xsm:text-base">
               Total
             </h5>
@@ -45,23 +45,23 @@ const TableOne = () => {
               <p className="text-black dark:text-white">{Number(index) + 1}</p>
             </div>
 
-            <div className="flex items-center justify-center p-2.5 xl:p-5 md:-ml-29 -ml-26">
+            <div className="flex p-2.5 xl:p-5 -ml-10">
               <p className="text-black dark:text-white">{item?.bulan}</p>
             </div>
 
-            <div className="hidden sm:flex items-center justify-center p-2.5 xl:p-5  -ml-20">
+            <div className="hidden sm:flex items-center  p-2.5 xl:p-5  -ml-10">
               <p className="hidden sm:block text-black dark:text-white">
                 Rp.{formatTotalSatpam(item?.totalSatpam)}
               </p>
             </div>
 
-            <div className="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
+            <div className="hidden items-center -ml-10 p-2.5 sm:flex xl:p-5">
               <p className="hidden sm:block text-black dark:text-white">
                 Rp.{formatTotalSatpam(item?.totalKebersihan)}
               </p>
             </div>
 
-            <div className="items-center justify-center p-2.5 flex xl:p-5">
+            <div className="p-2.5 flex xl:p-5">
               <p
                 className={
                   item?.total === 0
