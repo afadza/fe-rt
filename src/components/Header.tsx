@@ -53,7 +53,7 @@ const Header = (props: {
 
         <div className="flex items-center gap-3 2xsm:gap-7 justify-between w-full">
           <div>
-            <p className="hidden md:block text-2xl  dark:text-white font-bold text-black">
+            <p className="hidden md:block text-2xl md:ml-4  dark:text-white font-bold text-black">
               Dashboard Desa RT. 05
             </p>
           </div>
