@@ -15,12 +15,12 @@ const TableOne = () => {
           <div className="p-2.5 xl:p-5">
             <h5 className="text-sm font-medium uppercase xsm:text-base">No</h5>
           </div>
-          <div className="p-2.5 text-center xl:p-5">
+          <div className="p-2.5 text-center xl:p-5 md:-ml-29 -ml-26">
             <h5 className="text-sm font-medium uppercase xsm:text-base">
               Bulan
             </h5>
           </div>
-          <div className="hidden p-2.5 text-center sm:block xl:p-5">
+          <div className="hidden p-2.5 text-center sm:block xl:p-5 -ml-20">
             <h5 className="text-sm font-medium uppercase xsm:text-base">
               Uang Satpam
             </h5>
@@ -45,11 +45,11 @@ const TableOne = () => {
               <p className="text-black dark:text-white">{Number(index) + 1}</p>
             </div>
 
-            <div className="flex items-center justify-center p-2.5 xl:p-5">
+            <div className="flex items-center justify-center p-2.5 xl:p-5 md:-ml-29 -ml-26">
               <p className="text-black dark:text-white">{item?.bulan}</p>
             </div>
 
-            <div className="hidden sm:flex items-center justify-center p-2.5 xl:p-5">
+            <div className="hidden sm:flex items-center justify-center p-2.5 xl:p-5  -ml-20">
               <p className="hidden sm:block text-black dark:text-white">
                 Rp.{formatTotalSatpam(item?.totalSatpam)}
               </p>
