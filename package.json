@@ -1,5 +1,5 @@
 {
-  "name": "tailadmin-react-free",
+  "name": "dashboard-rt",
   "private": true,
   "version": "1.0.5",
   "type": "module",
@@ -9,9 +9,8 @@
     "preview": "vite preview"
   },
   "author": {
-    "name": "TailAdmin",
-    "email": "hello@tailadmin.com",
-    "url": "https://tailadmin.com"
+    "name": "Arya Fadhilah Dzaki",
+    "email": "arya.skoba@gmail.com"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.17.12",
