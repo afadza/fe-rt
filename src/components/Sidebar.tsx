@@ -74,10 +74,10 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
           onClick={() => setSidebarOpen(!sidebarOpen)}
           aria-controls="sidebar"
           aria-expanded={sidebarOpen}
-          className="block lg:hidden bg-white p-2.5 rounded-full"
+          className="block lg:hidden bg-bodydark2 p-2.5 rounded-full"
         >
           <svg
-            className="fill-current"
+            className="fill-current text-white"
             width="20"
             height="18"
             viewBox="0 0 20 18"
