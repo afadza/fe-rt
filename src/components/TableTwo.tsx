@@ -1,7 +1,15 @@
+import Loader from '../common/Loader';
 import { useRekapPerBulan } from '../hooks/useRekapPerBulan';
 
 const TableTwo = () => {
   const { Perbulan, formatTotalSatpam, setBulan } = useRekapPerBulan();
+
+  if (!Perbulan)
+    return (
+      <div className="w-full flex justify-center items-center dark:bg-boxdark  bg-white">
+        <Loader />
+      </div>
+    );
   return (
     <div className="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
       <div className="flex mb-4 gap-4">

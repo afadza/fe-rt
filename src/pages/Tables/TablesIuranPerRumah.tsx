@@ -1,9 +1,17 @@
+import Loader from '../../common/Loader';
 import { useRekapPerRumah } from '../../hooks/useRekapPerRumah';
 import { useRumah } from '../../hooks/useRumah';
 
 const TablesIuranPerRumah = () => {
   const { Perumah, formatTotalSatpam, setNo, no } = useRekapPerRumah();
   const { daftarRumah } = useRumah();
+
+  if (!Perumah)
+    return (
+      <div className="w-full flex justify-center items-center dark:bg-boxdark  bg-white">
+        <Loader />
+      </div>
+    );
   return (
     <div className="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
       <div className="flex mb-4 gap-4">
