@@ -119,6 +119,11 @@ const StatusWarga = () => {
                       className="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
                     />
                   </div>
+                  {ErrorData && (
+                    <p className="text-meta-1 text-sm mb-4">
+                      * Nama pemilik tidak boleh kosong
+                    </p>
+                  )}
 
                   <button
                     type="button"
