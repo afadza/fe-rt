@@ -77,6 +77,9 @@ const IuranBulanan = () => {
                   onChange={(e) => setNo(parseInt(e.target.value))}
                   className="relative z-20 w-full appearance-none rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
                 >
+                  <option value="" hidden>
+                    Pilih no rumah / pemilik
+                  </option>
                   {daftarRumah?.map((rumah: any, index: number) => (
                     <option key={index} value={rumah.nomor_rumah}>
                       {rumah.nomor_rumah} / {rumah.pemilik}

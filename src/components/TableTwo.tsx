@@ -1,8 +1,17 @@
+import { useState } from 'react';
 import Loader from '../common/Loader';
 import { useRekapPerBulan } from '../hooks/useRekapPerBulan';
+import { MdDelete } from 'react-icons/md';
 
 const TableTwo = () => {
-  const { Perbulan, formatTotalSatpam, setBulan } = useRekapPerBulan();
+  const {
+    Perbulan,
+    formatTotalSatpam,
+    setBulan,
+    setNoPembayaran,
+    HapusPembayaran,
+  } = useRekapPerBulan();
+  const [modal, setModal] = useState(false);
 
   if (!Perbulan)
     return (
@@ -55,6 +64,9 @@ const TableTwo = () => {
               </th>
               <th className="py-4 px-4 font-medium text-black dark:text-white">
                 Status
+              </th>
+              <th className="py-4 px-4 font-medium text-black dark:text-white">
+                Hapus
               </th>
             </tr>
           </thead>
@@ -146,10 +158,48 @@ const TableTwo = () => {
                     </p>
                   </td>
                 )}
+
+                {item.payments[0].status !== 'Belum Bayar' && (
+                  <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
+                    <button
+                      onClick={() => {
+                        setModal(!modal);
+                        setNoPembayaran(item.payments[0].id);
+                      }}
+                      className="inline-flex rounded-full bg-danger bg-opacity-10 py-1 px-3 text-sm font-medium text-danger"
+                    >
+                      <MdDelete />
+                    </button>
+                  </td>
+                )}
               </tr>
             ))}
           </tbody>
         </table>
+        {modal && (
+          <div className="-ml-2 p-5 fixed  rounded-md border dark:border-stroke dark:bg-white shadow-default border-strokedark bg-boxdark modal-center">
+            <p className="mb-4 font-medium dark:text-black text-white text-[10px]">
+              Anda yakin ingin menghapus pembayaran ?
+            </p>
+            <div className="flex justify-end gap-2 ">
+              <button
+                onClick={() => setModal(!modal)}
+                className="inline-flex rounded-full bg-success bg-opacity-10 py-1 px-3  text-[10px] font-medium text-success"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={() => {
+                  setModal(!modal);
+                  HapusPembayaran();
+                }}
+                className="inline-flex rounded-full bg-danger bg-opacity-10 py-1 px-3  text-[10px] font-medium text-danger"
+              >
+                Konfirmasi
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
