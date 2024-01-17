@@ -5,7 +5,7 @@ import SwitcherOne from '../../components/SwitcherOne';
 import { useState } from 'react';
 
 const StatusWarga = () => {
-  const { RumahKosong, daftarRumah } = useRumah();
+  const { RumahKosong, daftarRumah} = useRumah();
   const { addPenghuni, setNama, nama, setNo, setStatus, status, ErrorData } =
     usePenghuni();
   const [enabled, setEnabled] = useState<boolean>(false);
@@ -15,7 +15,6 @@ const StatusWarga = () => {
       <Breadcrumb pageName="Penghuni Baru" />
       <div>
         <div className="flex flex-col gap-9">
-          {/* <!-- Contact Form --> */}
           <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
             <div className="border-b border-stroke py-4 px-6.5 dark:border-strokedark items-center">
               <div className="flex items-center gap-4">

@@ -5,8 +5,9 @@ import { useNavigate } from 'react-router-dom';
 
 export function useRumah() {
   const navigate = useNavigate();
+  const [noRumah, setNoRumah] = useState(0);
   const { data: Rumah } = useQuery({
-    queryKey: ['rumah'],
+    queryKey: ['rumah', noRumah],
     queryFn: async () => {
       const response = await API.get('/rumah');
       return response.data;
@@ -93,6 +94,23 @@ export function useRumah() {
 
   const [enabled, setEnabled] = useState<boolean>(false);
 
+  const { mutate: HapusRumah } = useMutation({
+    mutationFn: async () => {
+      const response = await API.delete('/rumah', {
+        data: {
+          nomor_rumah: noRumah,
+        },
+      });
+      return response.data;
+    },
+    onSuccess: () => {
+      setNoRumah(0);
+    },
+    onError: (error) => {
+      console.log('error', error);
+    },
+  });
+
   return {
     Rumah,
     RumahKosong,
@@ -111,5 +129,8 @@ export function useRumah() {
     setEnabled,
     Lunas,
     ErrorLunas,
+    noRumah,
+    setNoRumah,
+    HapusRumah,
   };
 }

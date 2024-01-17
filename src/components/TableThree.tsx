@@ -1,7 +1,10 @@
+import { useState } from 'react';
 import { useRumah } from '../hooks/useRumah';
+import { MdDelete } from 'react-icons/md';
 
 const TableThree = () => {
-  const { Rumah } = useRumah();
+  const { Rumah, setNoRumah, noRumah, HapusRumah } = useRumah();
+  const [modal, setModal] = useState(false);
   return (
     <div className="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
       <div className="max-w-full overflow-x-auto">
@@ -22,6 +25,9 @@ const TableThree = () => {
               </th>
               <th className="py-4 px-4 font-medium text-black dark:text-white">
                 Status
+              </th>
+              <th className="py-4 px-4 font-medium text-black dark:text-white">
+                Hapus
               </th>
             </tr>
           </thead>
@@ -82,10 +88,45 @@ const TableThree = () => {
                     </p>
                   </td>
                 )}
+                <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
+                  <button
+                    onClick={() => {
+                      setModal(!modal);
+                      setNoRumah(item.nomor_rumah);
+                    }}
+                    className="inline-flex rounded-full bg-danger bg-opacity-10 py-1 px-3 text-sm font-medium text-danger"
+                  >
+                    <MdDelete />
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
+        {modal && (
+          <div className="-ml-2 p-5 fixed  rounded-md border dark:border-stroke dark:bg-white shadow-default border-strokedark bg-boxdark modal-center">
+            <p className="mb-4 font-medium dark:text-black text-white text-[10px]">
+              Anda yakin ingin menghapus rumah No. {noRumah} ?
+            </p>
+            <div className="flex justify-end gap-2 ">
+              <button
+                onClick={() => setModal(!modal)}
+                className="inline-flex rounded-full bg-success bg-opacity-10 py-1 px-3  text-[10px] font-medium text-success"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={() => {
+                  setModal(!modal);
+                  HapusRumah();
+                }}
+                className="inline-flex rounded-full bg-danger bg-opacity-10 py-1 px-3  text-[10px] font-medium text-danger"
+              >
+                Konfirmasi
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
