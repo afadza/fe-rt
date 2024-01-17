@@ -8,6 +8,7 @@ const TableTwo = lazy(() => import('../components/TableTwo'));
 const TablesIuranPerRumah = lazy(
   () => import('../pages/Tables/TablesIuranPerRumah'),
 );
+const RumahBaru = lazy(() => import('../pages/Form/RumahBaru'));
 
 const coreRoutes = [
   {
@@ -39,6 +40,11 @@ const coreRoutes = [
     path: '/tables/daftar-iuran/rumah',
     title: 'Daftar Iuran Perumah',
     component: TablesIuranPerRumah,
+  },
+  {
+    path: '/forms/rumah-baru',
+    title: 'Rumah Baru',
+    component: RumahBaru,
   },
 ];
 
