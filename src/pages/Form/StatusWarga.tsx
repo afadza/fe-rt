@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 const StatusWarga = () => {
   const { RumahKosong, daftarRumah } = useRumah();
-  const { addPenghuni, setNama, nama, setNo, setStatus, status } =
+  const { addPenghuni, setNama, nama, setNo, setStatus, status, ErrorData } =
     usePenghuni();
   const [enabled, setEnabled] = useState<boolean>(false);
 
@@ -17,11 +17,16 @@ const StatusWarga = () => {
         <div className="flex flex-col gap-9">
           {/* <!-- Contact Form --> */}
           <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
-            <div className="border-b border-stroke py-4 px-6.5 dark:border-strokedark flex  gap-4 items-center">
-              <h3 className="font-medium text-black dark:text-white">
-                Penghuni Baru
-              </h3>
-              <SwitcherOne enabled={enabled} setEnabled={setEnabled} />
+            <div className="border-b border-stroke py-4 px-6.5 dark:border-strokedark items-center">
+              <div className="flex items-center gap-4">
+                <h3 className="font-medium text-black dark:text-white">
+                  Penghuni Baru
+                </h3>
+                <SwitcherOne enabled={enabled} setEnabled={setEnabled} />
+              </div>
+              <p className="text-[10px] text-meta-1 mt-3">
+                • Nyalakan penghuni baru untuk melihat no rumah yang kosong!
+              </p>
             </div>
             {enabled === true ? (
               <div>
@@ -216,6 +221,11 @@ const StatusWarga = () => {
                         className="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
                       />
                     </div>
+                  )}
+                  {ErrorData && (
+                    <p className="text-meta-1 text-sm mb-4">
+                      * Nama pemilik tidak boleh kosong
+                    </p>
                   )}
 
                   <button

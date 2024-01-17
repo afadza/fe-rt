@@ -139,15 +139,18 @@ const IuranBulanan = () => {
             </div>
             {ErrorBayar && (
               <div>
-                {ErrorBayar.response.data.message ===
-                'Pembayaran bulan ini sudah lunas' ? (
-                  <p className="text-meta-1">
-                    {ErrorBayar.response.data.message}
+                {ErrorBayar.message ===
+                'Request failed with status code 401' ? (
+                  <p className="text-meta-1 text-sm mb-4">
+                    Pembayaran bulan ini sudah lunas, silahkan ganti bulan
+                    selanjutnya
                   </p>
                 ) : (
                   <p className="text-meta-1">
-                    {ErrorBayar.response.data.message}, Rp.
-                    {formatTotalSatpam(ErrorBayar.response.data.data)}
+                    Kamu sudah bayar bulan ini, tapi masih kurang Rp.
+                    {formatTotalSatpam(
+                      (ErrorBayar as any)?.response?.data?.data,
+                    )}
                     <br />
                     Segera lakukan pelunasan!
                   </p>
@@ -156,8 +159,8 @@ const IuranBulanan = () => {
             )}
             {ErrorLunas && (
               <div>
-                <p className="text-meta-1">
-                  {ErrorLunas.response.data.message}
+                <p className="text-meta-1 text-sm mb-4">
+                  {(ErrorLunas as any)?.response?.data?.message}
                 </p>
               </div>
             )}
@@ -165,7 +168,9 @@ const IuranBulanan = () => {
             {enabled !== true ? (
               <button
                 type="button"
-                onClick={Bayar}
+                onClick={() => {
+                  Bayar();
+                }}
                 className="flex w-full justify-center rounded bg-primary p-3 font-medium text-gray"
               >
                 Bayar
@@ -173,7 +178,9 @@ const IuranBulanan = () => {
             ) : (
               <button
                 type="button"
-                onClick={Lunas}
+                onClick={() => {
+                  Lunas();
+                }}
                 className="flex w-full justify-center rounded bg-primary p-3 font-medium text-gray"
               >
                 Pelunasan

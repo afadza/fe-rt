@@ -8,7 +8,7 @@ export function usePenghuni() {
   const [nama, setNama] = useState('');
   const [no, setNo] = useState(0);
   const [status, setStatus] = useState('');
-  const { mutate: addPenghuni } = useMutation({
+  const { mutate: addPenghuni, error: ErrorData } = useMutation({
     mutationFn: async () => {
       const response = await API.patch('/rumah', {
         nomor_rumah: no,
@@ -25,5 +25,5 @@ export function usePenghuni() {
     },
   });
 
-  return { addPenghuni, setNama, nama, setNo, no, setStatus, status };
+  return { addPenghuni, setNama, nama, setNo, no, setStatus, status, ErrorData };
 }
