@@ -82,7 +82,7 @@ const TableTwo = () => {
                     <p className="text-black dark:text-white">
                       {item.payments[0].satpam !== null
                         ? 'Rp. ' + formatTotalSatpam(item.payments[0].satpam)
-                        : '0'}
+                        : 'Rp. 0'}
                     </p>
                   </td>
                 ) : (
